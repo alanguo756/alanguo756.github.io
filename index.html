@@ -219,7 +219,7 @@
        ========================================================= */
     #projects h2 { margin-bottom: 56px; }
  
-    .project { padding: 56px 0; border-top: 1px solid var(--line); align-items: end; }
+    .project { display: flow-root; padding: 56px 0; border-top: 1px solid var(--line); }
     .project:first-of-type { border-top: 0; padding-top: 0; }
  
     .figure {
@@ -301,11 +301,9 @@
     .gallery-dots button:hover { transform: scale(1.3); }
     .gallery-dots button[aria-current="true"] { background: var(--brass); transform: scale(1.3); }
  
-    .project .figure { grid-row: 1; }
-    .project:nth-of-type(odd)  .figure { grid-column: 1 / 8; }
-    .project:nth-of-type(odd)  .copy   { grid-column: 9 / 13; grid-row: 1; }
-    .project:nth-of-type(even) .copy   { grid-column: 1 / 6; grid-row: 1; }
-    .project:nth-of-type(even) .figure { grid-column: 7 / 13; }
+    /* Float the gallery so long descriptions continue beneath it. */
+    .project .figure { float: right; width: 48%; margin: 0 0 24px 36px; }
+    .project .tools { clear: both; }
  
     .copy h3 { margin-bottom: 4px; }
     .role { color: var(--muted); margin-bottom: 16px; }
@@ -338,16 +336,17 @@
     .skills li b { font-weight: 500; color: var(--strong); }
     .skills li span { color: var(--muted); text-align: right; }
  
-    .about-grid { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: 56px; }
-    .bio p { max-width: 62ch; }
+    .about-grid { display: flow-root; }
     .bio p + p { margin-top: 14px; }
-    .edu { margin-top: 32px; }
+    .edu { clear: both; padding-top: 32px; }
     .edu div { display: grid; grid-template-columns: 96px 1fr; gap: 12px; padding: 10px 0; border-top: 1px solid var(--line); }
     .edu dt { color: var(--muted); }
     .edu dd { color: var(--strong); }
  
     .contact {
-      align-self: start;
+      float: right;
+      width: 44%;
+      margin: 0 0 24px 32px;
       padding: 24px;
       border: 1px solid var(--line);
       background: linear-gradient(180deg, var(--layer-2), var(--layer-1));
@@ -361,6 +360,7 @@
     .contact dt { color: var(--muted); }
     .contact dd { overflow-wrap: anywhere; color: var(--strong); }
     .contact .btn { margin-top: 20px; }
+    .contact-socials { display: flex; flex-wrap: wrap; gap: 12px; }
  
     footer { border-top: 1px solid var(--line); padding: 28px 0; color: var(--muted); }
  
@@ -372,10 +372,12 @@
       .hero-copy, .spec { grid-column: 1 / -1; }
       .side-h, .side-c { grid-column: 1 / -1; position: static; }
       .side-h { margin-bottom: 32px; }
-      .project { row-gap: 28px; padding: 44px 0; }
-      .project .figure, .project .copy { grid-column: 1 / -1 !important; grid-row: auto !important; }
-      .project .figure { margin-right: 12px; }
-      .skills, .about-grid { grid-template-columns: 1fr; }
+      .project { padding: 44px 0; }
+      .project .figure { float: none; width: 100%; margin: 0 0 28px; }
+      .skills { grid-template-columns: 1fr; }
+      .about-grid { display: flex; flex-direction: column; gap: 32px; }
+      .bio { order: -1; }
+      .contact { float: none; width: 100%; margin: 0; }
       .brand { display: none; }
       .nav .wrap { justify-content: center; }
       .nav .wrap { height: auto; min-height: 56px; padding: 8px 0; }
@@ -561,7 +563,6 @@
               <li>3D printing and laser cutting</li>
               <li>Hardware-software integration</li>
             </ul>
-            <p class="links"><a class="link" href="https://github.com/">GitHub</a></p>
           </div>
         </article>
  
@@ -672,6 +673,19 @@
       <div class="wrap grid">
         <h2 class="side-h">About and contact</h2>
         <div class="side-c about-grid">
+          <aside class="contact" aria-label="Contact details">
+            <h3>Get in touch</h3>
+            <dl>
+              <div><dt>Email</dt><dd><a class="link" href="mailto:alanguo100@gmail.com">alanguo100@gmail.com</a></dd></div>
+              <div><dt>Location</dt><dd>Vancouver, BC</dd></div>
+            </dl>
+            <div class="contact-socials">
+              <a class="btn btn-ghost" href="https://www.linkedin.com/in/alan-guo-865920314">LinkedIn</a>
+              <a class="btn btn-ghost" href="https://github.com/alanguo756">GitHub</a>
+            </div>
+            <a class="btn btn-primary" href="mailto:alanguo100@gmail.com">Send an email</a>
+          </aside>
+
           <div class="bio">
             <p>I am an Engineering Physics student at the University of British Columbia with a passion for designing and building systems that bridge the gap between hardware and software. I am particularly interested in embedded systems, robotics, electronics, and control systems, where thoughtful engineering can transform ideas into functional technologies.</p>
 
@@ -690,16 +704,7 @@
             </dl>
           </div>
  
-          <aside class="contact" aria-label="Contact details">
-            <h3>Get in touch</h3>
-            <dl>
-              <div><dt>Email</dt><dd><a class="link" href="mailto:alanguo100@gmail.com">alanguo100@gmail.com</a></dd></div>
-              <div><dt>LinkedIn</dt><dd><a class="link" href="www.linkedin.com/in/alan-guo-865920314">in/your-handle</a></dd></div>
-              <div><dt>GitHub</dt><dd><a class="link" href="https://github.com/your-handle">your-handle</a></dd></div>
-              <div><dt>Location</dt><dd>Vancouver, BC</dd></div>
-            </dl>
-            <a class="btn btn-primary" href="mailto:alanguo100@gmail.com">Send an email</a>
-          </aside>
+
         </div>
       </div>
     </section>
