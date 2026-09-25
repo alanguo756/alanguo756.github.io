@@ -1,6 +1,3 @@
-
-
-Index · HTML
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -363,6 +360,7 @@ Index · HTML
     .contact dl div { display: grid; grid-template-columns: 78px 1fr; gap: 12px; padding: 10px 0; border-top: 1px solid var(--line); }
     .contact dt { color: var(--muted); }
     .contact dd { overflow-wrap: anywhere; color: var(--strong); }
+    .contact .social-link { padding: 10px 0; border-top: 1px solid var(--line); }
     .contact .btn { margin-top: 20px; }
  
     footer { border-top: 1px solid var(--line); padding: 28px 0; color: var(--muted); }
@@ -470,13 +468,12 @@ Index · HTML
              and real <img> slides freely, and use anywhere from 1 to as many as you like.
              The arrows, dots, and swipe/scroll all wire themselves up automatically. -->
  
+        <!-- ALARM CLOCK PROJECT HIDDEN: Remove this opening comment and the closing comment after its article to restore.
         <article class="project grid">
           <figure class="figure gallery" data-count="1">
             <div class="gallery-track">
               <div class="slide" aria-hidden="true"><svg viewBox="0 0 120 80"><circle cx="60" cy="40" r="26"/><path d="M60 40V22M60 40l13 8"/><path d="M34 14 26 22M86 14l8 8"/></svg></div>
-              <!-- Example of adding a real photo as a second slide:
-              <div class="slide"><img src="images/alarm-clock-front.jpg" alt="Assembled alarm clock, front view"></div>
-              -->
+
             </div>
             <button class="gallery-btn prev" type="button" aria-label="Previous photo">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
@@ -487,7 +484,7 @@ Index · HTML
             <div class="gallery-dots"></div>
           </figure>
           <div class="copy">
-            <h3>ESP32 smart alarm clock and custom PCB</h3>
+            <h3>ESP32 Smart Alarm Clock and Custom PCB</h3>
             <p class="role">Personal project, Sep. 2026 to present. Solo build.</p>
             <p>Designed a custom 2-layer PCB in KiCad that combines an ESP32, OLED display, RTC, ambient-light sensor, buzzer driver, user-input buttons, and USB-C power.</p>
             <p>Took the product from requirements and breadboard prototyping through schematic, layout, assembly, firmware, and validation. Components were chosen by reading datasheets and checking electrical and package constraints.</p>
@@ -496,9 +493,10 @@ Index · HTML
             <p class="links"><a class="link" href="https://github.com/">GitHub</a></p>
           </div>
         </article>
+        -->
  
         <article class="project grid">
-          <figure class="figure gallery gallery-captioned" data-count="7">
+          <figure class="figure gallery gallery-captioned" data-count="8">
             <div class="gallery-track">
               <div class="slide">
                 <img src="images/robotImages/IMG_3187.JPG" alt="Final Fully Integrated Robot" loading="lazy">
@@ -514,6 +512,10 @@ Index · HTML
                   Your browser does not support embedded video. <a href="images/robotImages/IMG_9699.MP4">Download the video</a>.
                 </video>
                 <p class="gallery-caption">Metal Detector Signal Response</p>
+              </div>
+              <div class="slide">
+                <img src="images/robotImages/teletubbyTrainingPhoto.jpg" alt="Teletubby Recognition Model Training Photo taken with Raspberry Pi Zero W Camera" loading="lazy">
+                <p class="gallery-caption">Teletubby Recognition Model Training Photo taken with Raspberry Pi Zero W Camera</p>
               </div>
               <div class="slide">
                 <img src="images/robotImages/combined-image.jpg" alt="IR Circuit PCB Schematic and Layout" loading="lazy">
@@ -541,20 +543,40 @@ Index · HTML
             <div class="gallery-dots"></div>
           </figure>
           <div class="copy">
-            <h3>Autonomous robotics design project</h3>
+            <h3>Autonomous Robotics Design Project</h3>
             <p class="role">Course project, Jun. to Aug. 2026.</p>
-            <p>Designed and assembled custom PCBs in KiCad for IR sensing, metal detection, and embedded control, including soldering and hardware bring-up.</p>
-            <p>Programmed an ESP32 in C++ for motor, sensor, and actuator control, with PID tape following and SPI communication to an ADC. Built a Python vision system on a Raspberry Pi Zero W that detects targets and reports to the ESP32 over UART.</p>
-            <p class="result">Integrated power distribution and wiring across microcontrollers, sensors, and motor drivers, and debugged faults with a multimeter and oscilloscope.</p>
-            <ul class="tools"><li>KiCad</li><li>ESP32</li><li>C++</li><li>PID</li><li>SPI / UART</li><li>Python</li><li>Raspberry Pi</li></ul>
+            <p>Designed and built an autonomous robotic platform integrating embedded software, custom electronics, electromechanical systems, and machine learning-based computer vision to complete a series of competitive tasks. The project required coordination between multiple subsystems, including motor control, sensors, actuators, wireless communication, and vision processing, to create a reliable end-to-end robotic system.</p>
+            <p>Developed C++ firmware on an ESP32 microcontroller to control motors, sensors, and actuators while implementing SPI and UART communication between subsystems. Designed custom PCBs in KiCad and built motor driver circuits to interface the microcontroller with high-current motors. Integrated a Raspberry Pi Zero W with a camera system and developed a machine learning-based Teletubby recognition model to enable the robot to identify and interact with visual targets.</p>
+            <p>A major challenge was achieving reliable integration between electrical, mechanical, and software systems. Debugged power distribution, wiring, and signal issues using multimeters and oscilloscopes while performing extensive bench and on-robot testing. Iteratively refined hardware, firmware, and control strategies to improve system reliability and achieve autonomous task completion under competition constraints.</p>
+            <p><strong>Skills &amp; Tools:</strong></p>
+            <ul class="tools">
+              <li>Embedded C++ programming</li>
+              <li>ESP32 microcontroller development</li>
+              <li>SPI and UART communication</li>
+              <li>PCB design and schematic capture (KiCad)</li>
+              <li>H-bridge motor driver design</li>
+              <li>Sensor and actuator integration</li>
+              <li>Machine learning-based computer vision</li>
+              <li>Raspberry Pi camera integration</li>
+              <li>Hardware debugging (oscilloscope, multimeter)</li>
+              <li>3D printing and laser cutting</li>
+              <li>Hardware-software integration</li>
+            </ul>
             <p class="links"><a class="link" href="https://github.com/">GitHub</a></p>
           </div>
         </article>
  
         <article class="project grid">
-          <figure class="figure gallery" data-count="1">
+          <figure class="figure gallery gallery-captioned" data-count="2">
             <div class="gallery-track">
-              <div class="slide" aria-hidden="true"><svg viewBox="0 0 120 80"><path d="M10 40h20"/><circle cx="36" cy="40" r="6"/><path d="M42 40h14l6-10v20l-6-10"/><path d="M62 40h18"/><rect x="80" y="30" width="24" height="20"/><path d="M92 50v14H36V46"/></svg></div>
+              <div class="slide">
+                <img src="servoImages/Completecircuit.jpg" alt="Servo Motor Control Circuit" loading="lazy">
+                <p class="gallery-caption">Servo Motor Control Circuit</p>
+              </div>
+              <div class="slide">
+                <img src="servoImages/CompleteSketch.jpeg" alt="Servo Motor Control Circuit Schematic" loading="lazy">
+                <p class="gallery-caption">Servo Motor Control Circuit Schematic</p>
+              </div>
             </div>
             <button class="gallery-btn prev" type="button" aria-label="Previous photo">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
@@ -565,12 +587,20 @@ Index · HTML
             <div class="gallery-dots"></div>
           </figure>
           <div class="copy">
-            <h3>Closed-loop servo motor circuit</h3>
+            <h3>Closed-Loop Servo Motor Control Circuit</h3>
             <p class="role">Course project, Nov. to Dec. 2025.</p>
-            <p>Designed and assembled an analog and digital servo control circuit using logic ICs, op-amps, and an R-2R DAC.</p>
-            <p>Generated LATCH and RESET signals with Schmitt-trigger inverters and RC timing networks.</p>
-            <p class="result">Built and tested an error amplifier that regulates motor speed through feedback control.</p>
-            <ul class="tools"><li>Op-amps</li><li>Logic ICs</li><li>R-2R DAC</li><li>Feedback control</li></ul>
+            <p>Designed and implemented a closed-loop servo motor control system to study feedback control and position regulation. The system used a potentiometer-based position sensor to provide feedback, which was compared against a reference input to generate an error signal. A PI (proportional-integral) controller was implemented to reduce steady-state error and improve the accuracy and stability of the motor position response.</p>
+            <p>The circuit integrated digital logic, op-amp signal conditioning, an R-2R DAC, and feedback control elements to convert position commands into precise motor movement. I designed, assembled, and tested the system while troubleshooting signal behaviour, motor response, and control stability through iterative hardware validation. This project developed my understanding of analog circuit design, control theory, and practical implementation of feedback systems.</p>
+            <p><strong>Skills &amp; Tools:</strong></p>
+            <ul class="tools">
+              <li>Closed-loop feedback control</li>
+              <li>Analog circuit design and op-amp applications</li>
+              <li>Digital logic and signal processing</li>
+              <li>R-2R DAC implementation</li>
+              <li>Servo motor control</li>
+              <li>Circuit prototyping and debugging</li>
+              <li>Oscilloscope and multimeter measurements</li>
+            </ul>
           </div>
         </article>
       </div>
@@ -658,8 +688,10 @@ Index · HTML
             <h3>Get in touch</h3>
             <dl>
               <div><dt>Email</dt><dd><a class="link" href="mailto:alanguo100@gmail.com">alanguo100@gmail.com</a></dd></div>
-              <div><dt>LinkedIn</dt><dd><a class="link" href="https://linkedin.com/in/your-handle">in/your-handle</a></dd></div>
-              <div><dt>GitHub</dt><dd><a class="link" href="https://github.com/your-handle">your-handle</a></dd></div>
+            </dl>
+            <p class="social-link"><a class="link" href="https://www.linkedin.com/in/alan-guo-865920314">LinkedIn</a></p>
+            <p class="social-link"><a class="link" href="https://github.com/alanguo756">GitHub</a></p>
+            <dl>
               <div><dt>Location</dt><dd>Vancouver, BC</dd></div>
             </dl>
             <a class="btn btn-primary" href="mailto:alanguo100@gmail.com">Send an email</a>
