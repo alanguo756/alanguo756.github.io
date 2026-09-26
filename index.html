@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Alan Guo | Electrical Engineering Portfolio</title>
+  <link rel="icon" type="image/png" href="/icon.png">
   <meta name="description" content="Alan Guo, Engineering Physics student at UBC focused on custom PCB design, embedded firmware, and control circuits.">
   <meta name="color-scheme" content="dark">
  
@@ -174,45 +175,11 @@
     .spec dt { color: var(--muted); }
     .spec dd { color: var(--strong); }
  
-    /* Fourier scope panel */
-    .scope {
-      position: relative;
-      margin-top: 72px;
-      padding: 20px 24px 18px;
-      border: 1px solid var(--line);
-      background: linear-gradient(180deg, var(--layer-2), var(--layer-1));
-      box-shadow:
-        0 0 0 1px rgba(0, 0, 0, 0.6),
-        0 24px 40px -24px rgba(0, 0, 0, 0.9),
-        0 48px 80px -40px rgba(179, 155, 107, 0.12);
-    }
-    .scope svg { display: block; width: 100%; height: auto; }
-    .scope .gl { stroke: var(--line-soft); stroke-width: 1; }
-    .scope .axis { stroke: var(--line); stroke-width: 1; }
-    .scope .ideal { stroke: var(--brass-dim); stroke-width: 1; fill: none; stroke-dasharray: 4 5; opacity: 0.7; }
-    .scope .sig { stroke: var(--brass); stroke-width: 2; fill: none; stroke-linejoin: round; }
- 
-    .scope-controls { display: flex; flex-wrap: wrap; align-items: center; gap: 16px; margin-top: 14px; padding-top: 14px; border-top: 1px solid var(--line); }
-    .scope-controls label { color: var(--strong); }
-    .scope-controls output { color: var(--strong); font-weight: 700; min-width: 2ch; font-variant-numeric: tabular-nums; }
- 
-    input[type="range"] { flex: 1 1 200px; max-width: 360px; -webkit-appearance: none; appearance: none; background: transparent; height: 24px; margin: 0; cursor: pointer; }
-    input[type="range"]::-webkit-slider-runnable-track { height: 1px; background: var(--line); }
-    input[type="range"]::-moz-range-track { height: 1px; background: var(--line); }
-    input[type="range"]::-webkit-slider-thumb { -webkit-appearance: none; width: 14px; height: 14px; margin-top: -7px; background: var(--brass); border: 0; border-radius: 0; transition: transform 0.2s var(--ease); }
-    input[type="range"]::-moz-range-thumb { width: 14px; height: 14px; background: var(--brass); border: 0; border-radius: 0; transition: transform 0.2s var(--ease); }
-    input[type="range"]:hover::-webkit-slider-thumb { transform: scale(1.25); }
-    input[type="range"]:hover::-moz-range-thumb { transform: scale(1.25); }
-    input[type="range"]:active::-webkit-slider-thumb { transform: scale(0.9); }
-    input[type="range"]:active::-moz-range-thumb { transform: scale(0.9); }
-    input[type="range"]:focus-visible { outline: 1px solid var(--brass); outline-offset: 2px; }
- 
     /* One orchestrated load-in for the hero only */
     @keyframes rise { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
-    #home h1, .hero-copy, .spec, .scope { animation: rise 0.8s var(--ease) both; }
+    #home h1, .hero-copy, .spec { animation: rise 0.8s var(--ease) both; }
     .hero-copy { animation-delay: 0.12s; }
     .spec { animation-delay: 0.22s; }
-    .scope { animation-delay: 0.34s; }
  
     /* =========================================================
        PROJECTS
@@ -386,7 +353,7 @@
     }
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
-      #home h1, .hero-copy, .spec, .scope { animation: none; }
+      #home h1, .hero-copy, .spec { animation: none; }
       .btn, .link, .link::after, .figure::before { transition: none; }
     }
   </style>
@@ -440,20 +407,6 @@
           </dl>
         </div>
  
-        <!-- Fourier demo: square wave built from odd sine harmonics -->
-        <div class="scope">
-          <svg id="scope" viewBox="0 0 800 220" role="img" aria-label="A square wave being built from sine wave harmonics. Use the slider to change how many harmonics are added.">
-            <g id="gridlines"></g>
-            <line class="axis" x1="0" y1="110" x2="800" y2="110"/>
-            <path id="ideal" class="ideal"/>
-            <path id="sig" class="sig"/>
-          </svg>
-          <div class="scope-controls">
-            <label for="harmonics">Sine harmonics summed into a square wave</label>
-            <input id="harmonics" type="range" min="1" max="25" step="1" value="3">
-            <output id="harmonicsOut" for="harmonics">3</output>
-          </div>
-        </div>
       </div>
     </section>
  
@@ -775,57 +728,6 @@
       render();
     });
  
-    // Scope grid lines
-    const NS = 'http://www.w3.org/2000/svg';
-    const g = document.getElementById('gridlines');
-    for (let x = 0; x <= 800; x += 80) {
-      const l = document.createElementNS(NS, 'line');
-      l.setAttribute('class', 'gl');
-      l.setAttribute('x1', x); l.setAttribute('x2', x);
-      l.setAttribute('y1', 0); l.setAttribute('y2', 220);
-      g.appendChild(l);
-    }
-    for (let y = 20; y <= 200; y += 45) {
-      const l = document.createElementNS(NS, 'line');
-      l.setAttribute('class', 'gl');
-      l.setAttribute('y1', y); l.setAttribute('y2', y);
-      l.setAttribute('x1', 0); l.setAttribute('x2', 800);
-      g.appendChild(l);
-    }
- 
-    // Square wave from Fourier series: (4/π) Σ sin((2k-1)x) / (2k-1)
-    const slider = document.getElementById('harmonics');
-    const out = document.getElementById('harmonicsOut');
-    const sig = document.getElementById('sig');
-    const ideal = document.getElementById('ideal');
-    const W = 800, MID = 110, AMP = 75, CYCLES = 2, N = 480;
- 
-    function draw(terms) {
-      let d = '';
-      for (let i = 0; i <= N; i++) {
-        const x = (i / N) * CYCLES * 2 * Math.PI;
-        let y = 0;
-        for (let k = 1; k <= terms; k++) {
-          const n = 2 * k - 1;
-          y += Math.sin(n * x) / n;
-        }
-        y *= 4 / Math.PI;
-        d += (i === 0 ? 'M' : 'L') + ((i / N) * W).toFixed(1) + ' ' + (MID - y * AMP).toFixed(1);
-      }
-      sig.setAttribute('d', d);
-      out.textContent = terms;
-    }
- 
-    let ref = '';
-    for (let c = 0; c < CYCLES; c++) {
-      const x0 = (c / CYCLES) * W, xm = x0 + W / CYCLES / 2, x1 = x0 + W / CYCLES;
-      ref += `M${x0} ${MID - AMP}H${xm}V${MID + AMP}H${x1}`;
-      if (c < CYCLES - 1) ref += `V${MID - AMP}`;
-    }
-    ideal.setAttribute('d', ref);
- 
-    slider.addEventListener('input', () => draw(+slider.value));
-    draw(+slider.value);
   </script>
 </body>
 </html>
